@@ -26,25 +26,11 @@ npLED_t leds[LED_COUNT];
 PIO np_pio;
 uint sm;
 
-int index_fora_do_coracao[10] = {0,0,0,0,0,0,0,0,0,0};
-int colunas_fora_coracao[] = {2,1,3,0,4,0,2,4,1,3} ; 
-int linhas_fora_coracao[] = {0,1,1,2,2,3,3,3,4,4} ; 
+int index_fora_do_coracao[10] = {2,6,8,10,14,15,17,19,21,23};
+int index_dentro_coracao[6] = {7,11,12,13,16,18};
+int index_cantos[4] = {0,4,20,24};
+int index_restante[5] = {1,3,5,9,22};
 
-int index_dentro_coracao[6] = {0,0,0,0,0,0};
-int colunas_dentro_coracao[] = {2,1,2,3,1,3};
-int linhas_dentro_coracao[] = {1,2,2,2,3,3};
-
-int index_cantos[4] = {0,0,0,0};
-int colunas_canto[] = {0,0,4,4};
-int linhas_canto[] = {0,4,0,4};
-
-int index_restante[5] = {0,0,0,0,0};
-int colunas_restante[] = {0,1,3,4,2};
-int linhas_restante[] = {1,0,0,1,4};
-
-int todos_index[25] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
-int todas_colunas[] = {0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4,0,1,2,3,4};
-int todas_linhas[] = {0,0,0,0,0,1,1,1,1,1,2,2,2,2,2,3,3,3,3,3,4,4,4,4,4};
 
 const uint8_t colunas[4] = {19, 18, 17, 16}; // Pinos das colunas
 const uint8_t linhas[4] = {26, 22, 21, 20};  // Pinos das linhas
@@ -178,23 +164,6 @@ void npWrite() {
 }
 
 
-/**
- * Converte as coordenadas (x, y) na matriz 5x5 para o índice da fila linear.
- * 
- * @param x A coluna (0 a 4).
- * @param y A linha (0 a 4).
- * @return O índice correspondente na fila (0 a 24).
- */
-int getIndex(int x, int y) {
-    // Se a linha for par (0, 2, 4), percorremos da esquerda para a direita.
-    // Se a linha for ímpar (1, 3), percorremos da direita para a esquerda.
-    if (y % 2 == 0) {
-        return y * 5 + x; // Linha par (esquerda para direita).
-    } else {
-        return y * 5 + (4 - x); // Linha ímpar (direita para esquerda).
-    }
-}
-
 void desenha_parte_do_coracao(int indices[], int tamanho, int r, int g, int b) {
     for (int i = 0; i < tamanho; i++) {
         npSetLED(indices[i], r, g, b);
@@ -202,9 +171,16 @@ void desenha_parte_do_coracao(int indices[], int tamanho, int r, int g, int b) {
     npWrite();
 }
 
+void preenche_todos_leds(int red, int green, int blue){
+  for (int i = 0; i < 25; i++){
+        npSetLED(i,red,green,blue);
+      }
+      npWrite();
+}
+
 
 void desenha_coracao_completo(int red_intensidade){
-   for (int i = 0; i < 10; i++) {
+   for (int i = 0; i < 15; i++) {
       desenha_parte_do_coracao(index_dentro_coracao, 6, red_intensidade,0,0);   // Parte interna
       sleep_ms(300);
       npClear();
@@ -217,36 +193,9 @@ void desenha_coracao_completo(int red_intensidade){
       desenha_parte_do_coracao(index_cantos,4,red_intensidade,0,0);
       sleep_ms(150);
       npClear();
-      desenha_parte_do_coracao(todos_index,25,red_intensidade,0,0);
-      sleep_ms(150);
-      npClear();
     }
 }
 
-void buscar_posicoes(){
-  for (int i = 0; i < 25; i++){
-      todos_index[i] = getIndex(todas_colunas[i],todas_linhas[i]);
-
-      if (i < 10){
-      index_fora_do_coracao[i] = getIndex(colunas_fora_coracao[i],linhas_fora_coracao[i]);
-        
-      }
-    
-      if (i < 6) {
-            index_dentro_coracao[i] = getIndex(colunas_dentro_coracao[i], linhas_dentro_coracao[i]);
-      }
-
-      if (i < 4){
-        index_cantos[i] = getIndex(colunas_canto[i],linhas_canto[i]);
-      }
-
-      if (i < 5){
-        index_restante[i] = getIndex(colunas_restante[i],linhas_restante[i]);
-      }
-      
-      
-  }
-}
 
 
 
@@ -260,7 +209,6 @@ int main() {
   npInit(LED_PIN);
   npClear();
   npWrite();
-  buscar_posicoes();
   while (true) {
     char tecla = leitura_teclado();
     
@@ -297,11 +245,7 @@ int main() {
           //("Todos os leds ligados na cor Azul com 100%%");
           npClear();
           npWrite();
-          for (int i = 0; i < 25; i++)
-          {
-            npSetLED(todos_index[i],0,0,255);
-          }
-          npWrite();
+          preenche_todos_leds(0,0,255);
           
         }
 
@@ -309,33 +253,21 @@ int main() {
           //("Todos os leds ligados na cor Vermelha com 80%%");
           npClear();
           npWrite();
-          for (int i = 0; i < 25; i++)
-          {
-            npSetLED(todos_index[i],204,0,0);
-          }
-          npWrite();
+          preenche_todos_leds(204,0,0);
         }
 
         else if(tecla == 'D'){
           //("Todos os leds ligados na cor verde com 50%%");
           npClear();
           npWrite();
-          for (int i = 0; i < 25; i++)
-          {
-            npSetLED(todos_index[i],0,127,0);
-          }
-          npWrite();
+          preenche_todos_leds(0,127,0);
         }
 
         else if(tecla == '#'){
           //("Todos os leds ligados na cor branca com 20%%");
           npClear();
           npWrite();
-          for (int i = 0; i < 25; i++)
-          {
-            npSetLED(todos_index[i],51,51,51);
-          }
-          npWrite();
+          preenche_todos_leds(51,51,51);
         }
         else if(tecla == '*'){
           // Habilita modo de gravação
