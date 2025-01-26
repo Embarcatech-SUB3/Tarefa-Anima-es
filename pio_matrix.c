@@ -38,14 +38,6 @@ char MAPA_TECLAS[16] = {
     '*', '0', '#', 'D'
 };
 
-// Frame para limpar a tela com delay
-double desenho_0[25] = {
-                        0.0, 0.0, 0.0, 0.0, 0.0,
-                        0.0, 0.0, 0.0, 0.0, 0.0, 
-                        0.0, 0.0, 0.0, 0.0, 0.0,
-                        0.0, 0.0, 0.0, 0.0, 0.0,
-                        0.0, 0.0, 0.0, 0.0, 0.0 };
-
 
 //Frames da animação 0
 double desenho_1[25] = {
