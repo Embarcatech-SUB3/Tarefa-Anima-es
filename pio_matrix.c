@@ -38,6 +38,15 @@ char MAPA_TECLAS[16] = {
     '*', '0', '#', 'D'
 };
 
+// Frame para limpar a tela com delay
+double desenho_0[25] = {
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0, 
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0 };
+
+
 //Frames da animação 0
 double desenho_1[25] = {
                         0.0, 0.0, 0.0, 0.0, 0.0,
@@ -68,6 +77,46 @@ double desenho_5[25] = {
                         1.0, 1.0, 0.0, 1.0, 1.0, 
                         1.0, 0.0, 0.0, 0.0, 1.0,
                         1.0, 1.0, 0.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0 };
+
+
+// Frames da Animação 1
+double desenho_6[25] = {
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0, 
+                        0.0, 1.0, 1.0, 1.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0 };
+
+double desenho_7[25] = {
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0, 
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0 };
+
+
+double desenho_8[25] = {
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0, 
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0 };
+
+
+double desenho_9[25] = {
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0, 
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        0.0, 0.0, 0.0, 0.0, 0.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0 };
+
+
+double desenho_10[25] = {
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0, 
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0,
                         1.0, 1.0, 1.0, 1.0, 1.0 };
 
 //Inicializa o teclado matricial
@@ -167,6 +216,7 @@ void acionar_matriz_leds(double r, double b, double g, double desenho[], uint32_
     }
 }
 
+
 //Ligar leds azúis em 100%
 void ligar_leds_azul(uint32_t valor_led, PIO pio, uint sm){
     for (int16_t i = 0; i < LEDS; i++) {      
@@ -223,40 +273,59 @@ int main(){
         tecla = obter_tecla();
 
         if(tecla == '0'){
-            acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_3, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_3, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_4, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_4, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_5, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
-            sleep_ms(200);
-            acionar_matriz_leds(r, b, g, desenho_5, valor_led, pio, sm);
-            sleep_ms(200);
+            // Animação 1
+            for (int i = 0; i < 2; i++)
+            {
+                acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_3, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_3, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_2, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_4, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_4, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_5, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_1, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_5, valor_led, pio, sm);
+                sleep_ms(200);
+            }
+            
         }else if(tecla == '1'){
             //Animação 2
+            for (int i = 0; i < 5; i++)
+            {
+                acionar_matriz_leds(r,g,b,desenho_6,valor_led,pio,sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r,g,b,desenho_7,valor_led,pio,sm);
+                sleep_ms(300);
+                acionar_matriz_leds(r,g,b,desenho_8,valor_led,pio,sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r,g,b,desenho_9,valor_led,pio,sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r,g,b,desenho_10,valor_led,pio,sm);
+                sleep_ms(200);
+            }
+            
         }else if(tecla == '2'){
             //Animação 3
         }else if(tecla == '3'){
@@ -276,6 +345,6 @@ int main(){
         }else if(tecla == '*'){ 
             modo_bootsel();
         }
-        sleep_ms(1000);
+        sleep_ms(200);
     }
 }
