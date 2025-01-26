@@ -19,6 +19,6 @@ Este projeto tem como objetivo criar animações interativas em uma matriz de LE
    - **Tecla #:** Liga todos os LEDs na cor branca, com 20% de luminosidade.
 
 3. **Especificações opcionais:**
-   - **Tecla *:** Habilita o modo de gravação (reboot do sistema).
+   - **Tecla (*):** Habilita o modo de gravação (reboot do sistema).
 
 
