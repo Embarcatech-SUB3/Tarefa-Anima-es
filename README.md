@@ -20,6 +20,6 @@ Este projeto cria animações interativas com LEDs coloridos (5x5 WS2812) utiliz
    - **Tecla #:** Liga todos os LEDs na cor branca, com 20% de luminosidade.
 
 3. **Especificações opcionais:**
-   - **Tecla *:** Habilita o modo de gravação (reboot do sistema).
+   - **Tecla : * Habilita o modo de gravação (reboot do sistema).
 
 
