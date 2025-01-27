@@ -1,6 +1,6 @@
 # Tarefa U4C2: Geração de Animações em Matriz de LEDs 5x5
 
-Este projeto tem como objetivo criar animações interativas em uma matriz de LEDs coloridos (5x5 WS2812) utilizando o **Raspberry Pi Pico W** e um teclado matricial 4x4. O sistema é capaz de realizar animações controladas pelas teclas do teclado, bem como alterações no estado dos LEDs com base em comandos específicos. Feito pelo SubGrupo 3 do Grupo 5.
+Este projeto cria animações interativas com LEDs coloridos (5x5 WS2812) utilizando o **Raspberry Pi Pico W** e um teclado matricial 4x4. O sistema é capaz de realizar animações controladas pelas teclas do teclado, bem como alterações no estado dos LEDs com base em comandos específicos. Feito pelo SubGrupo 3 do Grupo 5.
 
 ### Vídeo de ensaio:
 
