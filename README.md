@@ -14,6 +14,7 @@ https://www.youtube.com/watch?v=teste_tarefa_sub3_gp5
 - Gabriel Henry Silva: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/animacoes-henry
 - Maria Eduarda Santos: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/Maria-Eduarda-Campos
 - Leonardo Bonifácio Vieira: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/Leonardo-Bonif%C3%A1cio
+- João Vitor Lopes Miranda: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/Jo%C3%A3o-Vitor-Lopes-Miranda
 
 ## Funcionalidades
 1. **Animações controladas pelas teclas (0-3):**
