@@ -111,6 +111,45 @@ double desenho_10[25] = {
                         1.0, 1.0, 1.0, 1.0, 1.0,
                         1.0, 1.0, 1.0, 1.0, 1.0 };
 
+//Frames da animação 2
+
+double desenho_11[25] = {
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0, 
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0 };
+
+double desenho_12[25] = {
+                        0.0, 1.0, 1.0, 1.0, 0.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0, 
+                        1.0, 0.0, 1.0, 0.0, 1.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0,
+                        0.0, 1.0, 1.0, 1.0, 0.0 };
+
+double desenho_13[25] = {
+                        0.0, 1.0, 1.0, 1.0, 0.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0, 
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0,
+                        0.0, 1.0, 1.0, 1.0, 0.0 };
+                        
+double desenho_14[25] = {
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0, 
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0 };
+
+double desenho_15[25] = {
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0, 
+                        1.0, 0.0, 1.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0 };
+
+
+
 //Inicializa o teclado matricial
 void inicializar_teclado(uint colunas[4], uint linhas[4], char valores_matriz[16]) {
     for (int i = 0; i < 16; i++) {
@@ -320,6 +359,19 @@ int main(){
             
         }else if(tecla == '2'){
             //Animação 3
+            for (int i = 0; i < 5; i++)
+            {
+                acionar_matriz_leds(r,g,b,desenho_11,valor_led,pio,sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r,g,b,desenho_12,valor_led,pio,sm);
+                sleep_ms(300);
+                acionar_matriz_leds(r,g,b,desenho_13,valor_led,pio,sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r,g,b,desenho_14,valor_led,pio,sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r,g,b,desenho_15,valor_led,pio,sm);
+                sleep_ms(200);
+            }
         }else if(tecla == '3'){
             //Animação 4
         }else if(tecla == '4'){
