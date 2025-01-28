@@ -9,6 +9,11 @@ Este projeto tem como objetivo criar animações interativas em uma matriz de LE
 
 https://www.youtube.com/watch?v=teste_tarefa_sub3_gp5
 
+### Branche de cada integrante:
+
+- Gabriel Henry Silva: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/animacoes-henry
+- Maria Eduarda Santos: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/Maria-Eduarda-Campos
+- Leonardo Bonifácio Vieira: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/Leonardo-Bonif%C3%A1cio
 
 ## Funcionalidades
 1. **Animações controladas pelas teclas (0-3):**
@@ -24,3 +29,4 @@ https://www.youtube.com/watch?v=teste_tarefa_sub3_gp5
 
 3. **Especificações opcionais:**
    - **Tecla (*):** Habilita o modo de gravação (reboot do sistema).
+
