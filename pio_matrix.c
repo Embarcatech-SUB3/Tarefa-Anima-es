@@ -149,6 +149,41 @@ double desenho_15[25] = {
                         1.0, 0.0, 0.0, 0.0, 1.0 };
 
 
+double desenho_16[25] = {
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 1.0, 1.0, 1.0, 0.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0};
+                        
+double desenho_17[25] = {
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        1.0, 0.0, 1.0, 0.0, 1.0,
+                        0.0, 1.0, 1.0, 1.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0};
+
+double desenho_18[25] = {
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0};
+
+double desenho_19[25] = {
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0,
+                        1.0, 1.0, 1.0, 1.0, 1.0};
+
+double desenho_20[25] = {
+                        1.0, 0.0, 0.0, 0.0, 1.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        0.0, 0.0, 1.0, 0.0, 0.0,
+                        0.0, 1.0, 0.0, 1.0, 0.0,
+                        1.0, 0.0, 0.0, 0.0, 1.0};
+
 
 //Inicializa o teclado matricial
 void inicializar_teclado(uint colunas[4], uint linhas[4], char valores_matriz[16]) {
@@ -234,13 +269,13 @@ uint32_t definir_cor_led(double intensidade_azul, double intensidade_vermelha, d
 // Ativa a matriz de LEDs com cor vermelha
 void acionar_matriz_leds(double r, double b, double g, double desenho[], uint32_t valor_led, PIO pio, uint sm) {
     for (int16_t i = 0; i < LEDS; i++) {      
-        if(r = 1.0){
+        if(r == 1.0){
             valor_led = definir_cor_led(b, desenho[24-i], g); 
             pio_sm_put_blocking(pio, sm, valor_led);
-        }else if (b = 1.0){
+        }else if (b == 1.0){
             valor_led = definir_cor_led(desenho[24-i], r, g); 
             pio_sm_put_blocking(pio, sm, valor_led);
-        }else if(g=1.0){
+        }else if(g == 1.0){
             valor_led = definir_cor_led(b, r, desenho[24-i]); 
             pio_sm_put_blocking(pio, sm, valor_led);
         } 
@@ -374,6 +409,18 @@ int main(){
             }
         }else if(tecla == '3'){
             //Animação 4
+             for (int i = 0; i < 5; i++) {
+                acionar_matriz_leds(r, b, g, desenho_16, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_17, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_18, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_19, valor_led, pio, sm);
+                sleep_ms(200);
+                acionar_matriz_leds(r, b, g, desenho_20, valor_led, pio, sm);
+                sleep_ms(200);
+            }
         }else if(tecla == '4'){
             //Animação 5
         }else if(tecla == 'A'){
