@@ -9,7 +9,7 @@ Este projeto tem como objetivo criar animações interativas em uma matriz de LE
 
 https://www.youtube.com/watch?v=teste_tarefa_sub3_gp5
 
-### Branche de cada integrante:
+### Branch de cada integrante:
 
 - Gabriel Henry Silva: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/animacoes-henry
 - Maria Eduarda Santos: https://github.com/Embarcatech-SUB3/Tarefa-MatrizLEDs/tree/Maria-Eduarda-Campos
